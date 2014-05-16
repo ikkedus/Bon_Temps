@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Items>
+  <MenuItem NavigateUrl="~/pages/index.aspx" Text="Home"/>
+  <MenuItem NavigateUrl="~/pages/menu.aspx" Text="Menu"/>
+  <MenuItem NavigateUrl="~/pages/reserveren.aspx" Text="Reserveren"/>
+  <MenuItem NavigateUrl="~/pages/contact.aspx" Text="Contact"/>
+</Items>

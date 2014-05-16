@@ -1,0 +1,96 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="layout.master.cs" Inherits="BonTemps.Pages.layout" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link rel="stylesheet" type="text/css" href="../style/stylesheet.css" />
+     <link rel='stylesheet' id='camera-css'  href='../style/camera.css' type='text/css' media='all'> 
+    <script type='text/javascript' src='../scripts/jquery.min.js'></script>
+    <script type='text/javascript' src='../scripts/jquery.mobile.customized.min.js'></script>
+    <script type='text/javascript' src='../scripts/jquery.easing.1.3.js'></script> 
+    <script type='text/javascript' src='../scripts/camera.min.js'></script> 
+    <script>
+        jQuery(function () {
+            jQuery('#camera_wrap_1').camera({
+                thumbnails: false
+            });
+        });
+	</script>
+    <link href='http://fonts.googleapis.com/css?family=Roboto|Open+Sans+Condensed:300|Source+Sans+Pro|Montserrat' rel='stylesheet' type='text/css'>
+    <asp:ContentPlaceHolder ID="Head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="header">
+            <div class="container">
+                <div id="headertext">
+                    <img id="logo" src="../images/Bon_Temps_logo_klein.png" alt="" />
+                    <div class="menu">
+                         <asp:XmlDataSource ID="XmlDataSource1" runat="server" 
+                            XPath="/Items/MenuItem" DataFile="~/xml/MenuData.xml">
+                        </asp:XmlDataSource>
+                        <asp:Menu ID="Menu1" runat="server" DataSourceID="XmlDataSource1">
+                            <DataBindings>
+                                <asp:MenuItemBinding DataMember="MenuItem" 
+                                    NavigateUrlField="NavigateUrl" TextField="Text" />
+                            </DataBindings>
+                        </asp:Menu>
+                       
+                    </div>
+                    <asp:ContentPlaceHolder ID="ContainerHeader" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+        <div id="content">
+            <div class="container">
+                 <div class="fluid_container">
+        <div class="camera_wrap camera_azure_skin" id="camera_wrap_1">
+            <div data-thumb="../images/slides/thumbs/bridge.jpg" data-src="../images/slides/3.jpg">
+                <div class="camera_caption fadeFromBottom">
+                    text1
+                </div>
+            </div>
+            <div data-thumb="../images/slides/thumbs/leaf.jpg" data-src="../images/slides/6.png">
+                <div class="camera_caption fadeFromBottom">
+                    text2
+                </div>
+            </div>
+            <div data-thumb="../images/slides/thumbs/road.jpg" data-src="../images/slides/1.jpg">
+                <div class="camera_caption fadeFromBottom">
+                    text3
+                </div>
+            </div>
+            <div data-thumb="../images/slides/thumbs/sea.jpg" data-src="../images/slides/2.jpg">
+                <div class="camera_caption fadeFromBottom">
+                    text4
+                </div>
+            </div>
+            <div data-thumb="../images/slides/thumbs/shelter.jpg" data-src="../images/slides/4.jpg">
+                <div class="camera_caption fadeFromBottom">
+                    text5
+                </div>
+            </div>
+            <div data-thumb="../images/slides/thumbs/tree.jpg" data-src="../images/slides/5.png">
+                <div class="camera_caption fadeFromBottom">
+                    text6
+                </div>
+            </div>
+        </div>
+                <asp:ContentPlaceHolder ID="contenttext_fullpage" runat="server">
+
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="container">
+                <div id="footertext">
+                    <p>2014 - Martin van der Gragt, Rico de Jongh en Lucas Rob</p>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

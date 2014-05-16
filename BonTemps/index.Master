@@ -1,0 +1,47 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="index.master.cs" Inherits="BonTemps.index1" %>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link rel="stylesheet" type="text/css" href="~/style/css-stylesheet.css" />
+    <link href='http://fonts.googleapis.com/css?family=Roboto|Open+Sans+Condensed:300|Source+Sans+Pro|Montserrat' rel='stylesheet' type='text/css'>
+    <asp:ContentPlaceHolder ID="Head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="header">
+            <div class="container">
+                <div id="headertext">
+                    <img id="logo" src="../images/Bon_Temps_logo_klein.png" alt="" />
+                    <div class="menu">
+                        <asp:Menu ID="Menu1" runat="server" DataSourceID="XmlDataSource1" OnPreRender="Menu1_PreRender" >
+                            <DataBindings>
+                                <asp:MenuItemBinding DataMember="MenuItem" 
+                                    NavigateUrlField="NavigateUrl" TextField="Text" />
+                            </DataBindings>
+                        </asp:Menu>
+                        <asp:XmlDataSource ID="XmlDataSource1" runat="server" 
+                            XPath="/Items/MenuItem" DataFile="~/xml/MenuData.xml">
+                        </asp:XmlDataSource>
+                    </div>
+                    <asp:ContentPlaceHolder ID="ContainerHeader" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+        <div id="content">
+            <div class="container">
+                <asp:ContentPlaceHolder ID="contenttext_fullpage" runat="server"></asp:ContentPlaceHolder>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="container">
+                <div id="footertext">
+                    <p>2014 - Martin van der Gragt, Rico de Jongh en Lucas Rob2</p>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
